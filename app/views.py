@@ -1,48 +1,54 @@
 import os
 import json
+import pandas as pd
 from app import app
-from flask import render_template, abort
+from flask import render_template, redirect, url_for, request
+
+def list_to_html(l):
+    return "<ul>"+"".join([f"<li>{e}</li>" for e in l])+"</ul>" if l else ""
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/extract', methods=['GET', 'POST'])
-def extract():
-    return render_template('extract.html')
+@app.route('/extract', methods=['post'])
+def extract_data():
+    product_id = request.form.get('product_id')
+    return redirect(url_for('product', product_id=product_id))
+
+@app.route('/extract', methods=['get'])
+def display_form():
+    return render_template("extract.html")
 
 @app.route('/products')
 def products():
-    products_dir = 'app/data/products'
-    products_list = []
-
-    for filename in os.listdir(products_dir):
-        if filename.endswith('.json'):
-            filepath = os.path.join(products_dir, filename)
-            with open(filepath, 'r', encoding="utf-8") as f:
+    products = []
+    try:
+        for filename in os.listdir("./app/data/products"):
+            with open(f"./app/data/products/{filename}", "r", encoding="UTF-8") as jf:
                 try:
-                    product = json.load(f)
-                    products_list.append(product)
+                    products.append(json.load(jf))
                 except json.JSONDecodeError:
                     continue
-
-    return render_template('products.html', products=products_list)
+        return render_template("products.html", products=products)
+    except FileNotFoundError:
+        error = "Nie pobrano jeszcze żadnch danych"
+        return render_template("products.html", error=error)
 
 @app.route('/author')
 def author():
-    return render_template('author.html')
+    return render_template("author.html")
 
-@app.route('/products/<int:product_id>')
-def product(product_id):
-    filepath = f'app/data/products/{product_id}.json'
-    
-    if not os.path.exists(filepath):
-        abort(404)
-
-    with open(filepath, 'r', encoding='utf-8') as f:
+@app.route('/product/<int:product_id>')
+def product(product_id:int):
+    with open(f"./app/data/opinions/{product_id}.json", "r", encoding="UTF-8") as jf:
         try:
-            product_data = json.load(f)
+            opinions = json.load(jf)
         except json.JSONDecodeError:
-            abort(500)
+            error = "Dla prodktu o podanym id nie pobrano jeszcze opinii"
+            return render_template("product.html", error=error)
+    opinions = pd.DataFrame.from_dict(opinions)
+    opinions.pros = opinions.pros.apply(list_to_html)
+    opinions.cons = opinions.cons.apply(list_to_html)
 
-    return render_template('product.html', product=product_data)
+    return render_template("product.html", opinions=opinions.to_html(classes="table table-hover table-bordered table-striped", index=False))
