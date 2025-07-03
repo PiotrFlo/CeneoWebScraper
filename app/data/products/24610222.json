@@ -1,0 +1,26 @@
+{
+    "product_id": "24610222",
+    "product_name": "FujiFilm Colorfilm Instax mini Glossy (10x2/PK)",
+    "opinions_count": "326",
+    "pros_count": 5,
+    "cons_count": 4,
+    "average_stars": 4.65,
+    "stars_distr": {
+        "0.0": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "1.5": 0,
+        "2.0": 0,
+        "2.5": 0,
+        "3.0": 0,
+        "3.5": 0,
+        "4.0": 2,
+        "4.5": 3,
+        "5.0": 5
+    },
+    "recommendation_distr": {
+        "Nie polecam": 0,
+        "Polecam": 10,
+        "null": 0
+    }
+}
