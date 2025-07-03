@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+O Autorze
+{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12 d-flex align-items-center">
+            <div class="me-4">
+                <img src="{{ url_for('static', filename='image.png') }}" alt="autor" class="img-fluid" style="width: 180px; height: auto;">
+            </div>
+            <p class="lead text-dark">
+                <strong>Piotr Floryn</strong> - student Informatyki Ekonomicznej na ANS w Nowym Targu
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="row my-4">
+        <div class="col-md-12">
+            <h2 class="h3 text-dark">Doświadczenie i projekty</h2>
+            <p class="text-dark">W trakcie studiów brałem udział w wielu projektach związanych z programowaniem, w tym:</p>
+            <ul class="text-dark">
+                <li><strong>CeneoWebScraper</strong> – aplikacja do ekstrakcji opinii i ocen produktów z platformy Ceneo. Projekt ten pozwolił mi na zgłębienie tematyki web scrapingu oraz pracy z bibliotekami takimi jak BeautifulSoup i Requests w Pythonie. Aplikacja umożliwia pobieranie danych o produktach, ich analizowanie oraz generowanie wykresów i raportów, które pomagają w podejmowaniu świadomych decyzji zakupowych.</li>
+                <li><strong>Analiza danych sprzedaży</strong> – projekt analizy danych sprzedaży, w którym stworzyłem model predykcyjny prognozujący przyszłe wyniki sprzedaży w oparciu o dane historyczne. Do realizacji tego projektu wykorzystałem język Python oraz biblioteki do analizy danych, takie jak pandas i matplotlib.</li>
+                <li><strong>Aplikacja do zarządzania projektami</strong> – stworzyłem aplikację webową umożliwiającą zarządzanie zadaniami i projektami w małych firmach. Projekt ten obejmował tworzenie interfejsu użytkownika przy użyciu Bootstrapa oraz backendu w Pythonie, wykorzystując Flask i bazę danych SQLite.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-md-12">
+            <h2 class="h3 text-dark">Udział w konkursach i hackathonach</h2>
+            <p class="text-dark">W ciągu ostatnich lat brałem również udział w kilku konkursach i hackathonach, gdzie mogłem sprawdzić swoje umiejętności w praktyce:</p>
+            <ul class="text-dark">
+                <li><strong>Hackathon "Innovative Solutions"</strong> – Zajęcie drugiego miejsca w ogólnopolskim hackathonie, gdzie stworzyliśmy prototyp aplikacji do analizy dużych zbiorów danych w czasie rzeczywistym, wykorzystując Big Data i technologie chmurowe.</li>
+                <li><strong>Konkurs "Programista Roku"</strong> – Udział w konkursie organizowanym przez jedną z firm IT, który polegał na rozwiązywaniu zadań programistycznych i algorytmicznych w czasie rzeczywistym. Konkurs ten pomógł mi rozwijać umiejętności w zakresie rozwiązywania problemów programistycznych pod presją czasu.</li>
+                <li><strong>Konkurs "Data Science Challenge"</strong> – Konkurs, w którym uczestniczyłem, polegał na tworzeniu modeli predykcyjnych do analizy dużych zbiorów danych. Zająłem wysokie miejsce, co pozwoliło mi na zdobycie doświadczenia w pracy z narzędziami do analizy danych i machine learning.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-md-12">
+            <h2 class="h3 text-dark">Moje zainteresowania</h2>
+            <p class="text-dark">Poza programowaniem i analizą danych, interesuję się również rozwojem osobistym oraz technologiami, które zmieniają sposób, w jaki funkcjonują biznesy. Lubię uczestniczyć w projektach, które łączą moje pasje z praktycznym wykorzystaniem nowych technologii, takich jak sztuczna inteligencja, analiza danych i automatyzacja procesów.</p>
+            <p class="text-dark">Jako pasjonat nowoczesnych rozwiązań technologicznych, staram się śledzić najnowsze trendy w branży IT i ekonomii cyfrowej, aby nieustannie rozwijać swoje umiejętności i poszerzać wiedzę.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
